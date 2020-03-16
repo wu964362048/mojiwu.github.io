@@ -16,7 +16,7 @@
 <meta property="og:description" content="你好 Hexo工作快一年了，整个人陷在CRUD的迷雾中，在这么下去不行了，打算用hexo记录一下自己的平时的学习点滴和记录. leetcode-144  二叉树的前序遍历ps：这题竟然能上中等，其实还是挺惊讶的 题目描述：给定一个二叉树，返回它的 前序 遍历。 第一种方法：递归以上方式应该是大部分人能轻松想出来的方法了，leetcode经典传空参数又踩了一脚，博主在最开始做的时候是直接把preo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-16T14:50:53.000Z">
-<meta property="article:modified_time" content="2020-03-16T15:08:12.831Z">
+<meta property="article:modified_time" content="2020-03-16T15:11:10.238Z">
 <meta property="article:author" content="mojiwu">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -179,73 +179,11 @@
 <p>leetcode-144  二叉树的前序遍历<br>ps：这题竟然能上中等，其实还是挺惊讶的</p>
 <p>题目描述：给定一个二叉树，返回它的 前序 遍历。</p>
 <p>第一种方法：递归<br>以上方式应该是大部分人能轻松想出来的方法了，leetcode经典传空参数又踩了一脚，博主在最开始做的时候是直接把preorderTraversal进行递归，后来想了想需要进行递归次数的newList，略显坑爹，就拆了两个方法，但是内存占用并没有减少几MB，甚为疑惑。以下是递归代码</p>
-<p>/**</p>
-<ul>
-<li><p>Definition for a binary tree node.</p>
-</li>
-<li><p>public class TreeNode {</p>
-</li>
-<li><p>int val;</p>
-</li>
-<li><p>TreeNode left;</p>
-</li>
-<li><p>TreeNode right;</p>
-</li>
-<li><p>TreeNode(int x) { val = x; }</p>
-</li>
-<li><p>}</p>
-</li>
-<li><p>/<br>class Solution {<br>  public List<Integer> preorderTraversal(TreeNode root) {</p>
-<pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-if(root==null){
-    return list;
-}
-return preorderTraversalLessM(root,list);</code></pre><p>  }</p>
-<p>  public List<Integer> preorderTraversalLessM(TreeNode root,List<Integer> res) {</p>
-<pre><code>res.add(root.val);
-if(root.left!=null){
-    preorderTraversalLessM(root.left,res);
-}
-if(root.right!=null){
-    preorderTraversalLessM(root.right,res);
-}
-return res;</code></pre><p>  }<br>}</p>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val &#x3D; x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</span><br><span class="line">        List&lt;Integer&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        if(root&#x3D;&#x3D;null)&#123;</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        return preorderTraversalLessM(root,list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Integer&gt; preorderTraversalLessM(TreeNode root,List&lt;Integer&gt; res) &#123;</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        if(root.left!&#x3D;null)&#123;</span><br><span class="line">            preorderTraversalLessM(root.left,res);</span><br><span class="line">        &#125;</span><br><span class="line">        if(root.right!&#x3D;null)&#123;</span><br><span class="line">            preorderTraversalLessM(root.right,res);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>第二种方法：迭代<br>博主没想出来，看了一下别人的方法才想到用stack来进行记录，本来是想用while循环root=root.left，后来觉得这读完一条线就断了，不太可能。感觉stack还是算法中比较常用的。以下是迭代代码</p>
-<p>/**</p>
-<ul>
-<li><p>Definition for a binary tree node.</p>
-</li>
-<li><p>public class TreeNode {</p>
-</li>
-<li><p>int val;</p>
-</li>
-<li><p>TreeNode left;</p>
-</li>
-<li><p>TreeNode right;</p>
-</li>
-<li><p>TreeNode(int x) { val = x; }</p>
-</li>
-<li><p>}</p>
-</li>
-<li><p>/<br>class Solution {<br>  public List<Integer> preorderTraversal(TreeNode root) {</p>
-<pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-if(root==null){
-    return list;
-}
-return preorderTraversalLessM(root,list);</code></pre><p>  }</p>
-<p>  public List<Integer> preorderTraversalLessM(TreeNode root,List<Integer> res) {</p>
-<pre><code>res.add(root.val);
-if(root.left!=null){
-    preorderTraversalLessM(root.left,res);
-}
-if(root.right!=null){
-    preorderTraversalLessM(root.right,res);
-}
-return res;</code></pre><p>  }<br>}</p>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val &#x3D; x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;</span><br><span class="line">        List&lt;Integer&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        if(root&#x3D;&#x3D;null)&#123;</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        return preorderTraversalLessM(root,list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;Integer&gt; preorderTraversalLessM(TreeNode root,List&lt;Integer&gt; res) &#123;</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        if(root.left!&#x3D;null)&#123;</span><br><span class="line">            preorderTraversalLessM(root.left,res);</span><br><span class="line">        &#125;</span><br><span class="line">        if(root.right!&#x3D;null)&#123;</span><br><span class="line">            preorderTraversalLessM(root.right,res);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>时间确实短了很多，目前博主开始慢慢刷题还没有锻炼良好思维，暂时从这些简单中等题做起吧。</p>
 <p>毕竟一件在普通的事，只要坚持，也会变成一件了不起的事。</p>
 <a id="more"></a>
