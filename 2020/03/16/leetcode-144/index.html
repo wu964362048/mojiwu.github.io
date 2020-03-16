@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello Hexo | mojiwu的Hexo</title>
+  <title>leetcode-144 二叉树的前序遍历 | mojiwu的Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你好 Hexo正文…">
+  <meta name="description" content="你好 Hexo工作快一年了，整个人陷在CRUD的迷雾中，在这么下去不行了，打算用hexo记录一下自己的平时的学习点滴和记录. leetcode-144  二叉树的前序遍历ps：这题竟然能上中等，其实还是挺惊讶的 题目描述：给定一个二叉树，返回它的 前序 遍历。 第一种方法：递归以上方式应该是大部分人能轻松想出来的方法了，leetcode经典传空参数又踩了一脚，博主在最开始做的时候是直接把preo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Hexo">
-<meta property="og:url" content="http://yoursite.com/2020/03/16/Hello-Hexo/index.html">
+<meta property="og:title" content="leetcode-144 二叉树的前序遍历">
+<meta property="og:url" content="http://yoursite.com/2020/03/16/leetcode-144/index.html">
 <meta property="og:site_name" content="mojiwu的Hexo">
-<meta property="og:description" content="你好 Hexo正文…">
+<meta property="og:description" content="你好 Hexo工作快一年了，整个人陷在CRUD的迷雾中，在这么下去不行了，打算用hexo记录一下自己的平时的学习点滴和记录. leetcode-144  二叉树的前序遍历ps：这题竟然能上中等，其实还是挺惊讶的 题目描述：给定一个二叉树，返回它的 前序 遍历。 第一种方法：递归以上方式应该是大部分人能轻松想出来的方法了，leetcode经典传空参数又踩了一脚，博主在最开始做的时候是直接把preo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-16T14:50:53.000Z">
-<meta property="article:modified_time" content="2020-03-16T14:52:46.451Z">
+<meta property="article:modified_time" content="2020-03-16T15:08:12.831Z">
 <meta property="article:author" content="mojiwu">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -155,19 +155,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hello-Hexo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-leetcode-144" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello Hexo
+      leetcode-144 二叉树的前序遍历
     </h1>
   
 
         
-        <a href="/2020/03/16/Hello-Hexo/" class="archive-article-date">
+        <a href="/2020/03/16/leetcode-144/" class="archive-article-date">
   	<time datetime="2020-03-16T14:50:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
 </a>
         
@@ -175,14 +175,83 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="你好-Hexo"><a href="#你好-Hexo" class="headerlink" title=" 你好 Hexo"></a><i class="fab fa-fort-awesome-alt"></i> 你好 Hexo</h2><p>正文…</p>
+        <h2 id="你好-Hexo"><a href="#你好-Hexo" class="headerlink" title=" 你好 Hexo"></a><i class="fab fa-fort-awesome-alt"></i> 你好 Hexo</h2><p>工作快一年了，整个人陷在CRUD的迷雾中，在这么下去不行了，打算用hexo记录一下自己的平时的学习点滴和记录.</p>
+<p>leetcode-144  二叉树的前序遍历<br>ps：这题竟然能上中等，其实还是挺惊讶的</p>
+<p>题目描述：给定一个二叉树，返回它的 前序 遍历。</p>
+<p>第一种方法：递归<br>以上方式应该是大部分人能轻松想出来的方法了，leetcode经典传空参数又踩了一脚，博主在最开始做的时候是直接把preorderTraversal进行递归，后来想了想需要进行递归次数的newList，略显坑爹，就拆了两个方法，但是内存占用并没有减少几MB，甚为疑惑。以下是递归代码</p>
+<p>/**</p>
+<ul>
+<li><p>Definition for a binary tree node.</p>
+</li>
+<li><p>public class TreeNode {</p>
+</li>
+<li><p>int val;</p>
+</li>
+<li><p>TreeNode left;</p>
+</li>
+<li><p>TreeNode right;</p>
+</li>
+<li><p>TreeNode(int x) { val = x; }</p>
+</li>
+<li><p>}</p>
+</li>
+<li><p>/<br>class Solution {<br>  public List<Integer> preorderTraversal(TreeNode root) {</p>
+<pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+if(root==null){
+    return list;
+}
+return preorderTraversalLessM(root,list);</code></pre><p>  }</p>
+<p>  public List<Integer> preorderTraversalLessM(TreeNode root,List<Integer> res) {</p>
+<pre><code>res.add(root.val);
+if(root.left!=null){
+    preorderTraversalLessM(root.left,res);
+}
+if(root.right!=null){
+    preorderTraversalLessM(root.right,res);
+}
+return res;</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<p>第二种方法：迭代<br>博主没想出来，看了一下别人的方法才想到用stack来进行记录，本来是想用while循环root=root.left，后来觉得这读完一条线就断了，不太可能。感觉stack还是算法中比较常用的。以下是迭代代码</p>
+<p>/**</p>
+<ul>
+<li><p>Definition for a binary tree node.</p>
+</li>
+<li><p>public class TreeNode {</p>
+</li>
+<li><p>int val;</p>
+</li>
+<li><p>TreeNode left;</p>
+</li>
+<li><p>TreeNode right;</p>
+</li>
+<li><p>TreeNode(int x) { val = x; }</p>
+</li>
+<li><p>}</p>
+</li>
+<li><p>/<br>class Solution {<br>  public List<Integer> preorderTraversal(TreeNode root) {</p>
+<pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+if(root==null){
+    return list;
+}
+return preorderTraversalLessM(root,list);</code></pre><p>  }</p>
+<p>  public List<Integer> preorderTraversalLessM(TreeNode root,List<Integer> res) {</p>
+<pre><code>res.add(root.val);
+if(root.left!=null){
+    preorderTraversalLessM(root.left,res);
+}
+if(root.right!=null){
+    preorderTraversalLessM(root.right,res);
+}
+return res;</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<p>时间确实短了很多，目前博主开始慢慢刷题还没有锻炼良好思维，暂时从这些简单中等题做起吧。</p>
+<p>毕竟一件在普通的事，只要坚持，也会变成一件了不起的事。</p>
 <a id="more"></a>
-
-<p>这里是在主页被隐藏的内容…</p>
-<div style = "text-align: center; margin: auto; width: 100%;">
-
-
-</div>
+<p>已经什么都没有了</p>
+<!-- <div style = "text-align: center; margin: auto; width: 100%;">
+</div> -->
       
 
       
@@ -287,7 +356,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/16/Hello-Hexo/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/16/leetcode-144/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,16 +368,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2020/03/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
