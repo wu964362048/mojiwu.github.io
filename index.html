@@ -152,6 +152,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-leetcode-234" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/17/leetcode-234/">leetcode-234 回文链表</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/17/leetcode-234/" class="archive-article-date">
+  	<time datetime="2020-03-17T12:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="mojiwu的leetcode记录"><a href="#mojiwu的leetcode记录" class="headerlink" title=" mojiwu的leetcode记录"></a><i class="fab fa-fort-awesome-alt"></i> mojiwu的leetcode记录</h2><p>leetcode-234 请判断一个链表是否为回文链表。<br>ps：今天看面经的时候偶然看到了回文，leetcode上都抄了一题</p>
+<p>题目描述：给定一个链表，判断该链表是否是回文链表</p>
+<p>栈<br>依赖栈FIFO的特性，进行两次循环判断，虽然确实提交成功了，但是时间和空间复杂度确实都不合格。以下是代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123; val &#x3D; x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isPalindrome(ListNode head) &#123;</span><br><span class="line">        if(head&#x3D;&#x3D;null||head.next&#x3D;&#x3D;null)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack stack  &#x3D; new Stack();</span><br><span class="line">        stack.push(head.val);</span><br><span class="line">        ListNode root &#x3D; head.next;</span><br><span class="line">        while(root!&#x3D;null)&#123;</span><br><span class="line">            stack.push(root.val);</span><br><span class="line">            root &#x3D; root.next;</span><br><span class="line">        &#125;</span><br><span class="line">        while(stack.size()&gt;0)&#123;</span><br><span class="line">            Integer top &#x3D; Integer.parseInt(stack.peek().toString());</span><br><span class="line">            if(top!&#x3D;head.val)&#123;</span><br><span class="line">            return false;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                head &#x3D; head.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以后再考虑优化吧，最近准备换工作，三本的学历和我当前的能力找工作非常困难，焦虑啊</p>
+<p>毕竟一件在普通的事，只要坚持，也会变成一件了不起的事。</p>
+        
+          <a class="article-more-a" href="/2020/03/17/leetcode-234/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/leetcode//" class="article-tag-list-link color4">leetcode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/17/leetcode-234/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-144" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -220,98 +312,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/16/leetcode-144/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-234" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/16/leetcode-234/">leetcode-234 回文链表</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/16/leetcode-234/" class="archive-article-date">
-  	<time datetime="2020-03-16T14:50:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="mojiwu的leetcode记录"><a href="#mojiwu的leetcode记录" class="headerlink" title=" mojiwu的leetcode记录"></a><i class="fab fa-fort-awesome-alt"></i> mojiwu的leetcode记录</h2><p>leetcode-234 请判断一个链表是否为回文链表。<br>ps：今天看面经的时候偶然看到了回文，leetcode上都抄了一题</p>
-<p>题目描述：给定一个链表，判断该链表是否是回文链表</p>
-<p>栈<br>依赖栈FIFO的特性，进行两次循环判断，虽然确实提交成功了，但是时间和空间复杂度确实都不合格。以下是代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123; val &#x3D; x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isPalindrome(ListNode head) &#123;</span><br><span class="line">        if(head&#x3D;&#x3D;null||head.next&#x3D;&#x3D;null)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack stack  &#x3D; new Stack();</span><br><span class="line">        stack.push(head.val);</span><br><span class="line">        ListNode root &#x3D; head.next;</span><br><span class="line">        while(root!&#x3D;null)&#123;</span><br><span class="line">            stack.push(root.val);</span><br><span class="line">            root &#x3D; root.next;</span><br><span class="line">        &#125;</span><br><span class="line">        while(stack.size()&gt;0)&#123;</span><br><span class="line">            Integer top &#x3D; Integer.parseInt(stack.peek().toString());</span><br><span class="line">            if(top!&#x3D;head.val)&#123;</span><br><span class="line">            return false;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                head &#x3D; head.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以后再考虑优化吧，最近准备换工作，三本的学历和我当前的能力找工作非常困难，焦虑啊</p>
-<p>毕竟一件在普通的事，只要坚持，也会变成一件了不起的事。</p>
-        
-          <a class="article-more-a" href="/2020/03/16/leetcode-234/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/leetcode//" class="article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/16/leetcode-234/">展开全文 >></a>
         </p>
       
 
